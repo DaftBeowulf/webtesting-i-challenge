@@ -59,8 +59,14 @@ describe("enhancer.js", () => {
         durability: 100,
         enhancement: 20
       };
+      const skullcrusher = {
+        name: "Skullcrusher",
+        durability: 100,
+        enhancement: 0
+      };
       it("modifies the item name by prepending [+ item.e] if item.e >0", () => {
         expect(get(glamdring).name).toBe("[+20] Glamdring");
+        expect(get(skullcrusher).name).toBe("Skullcrusher");
       });
       it("does not further modify the name if it has already been name enhanced", () => {
         expect(get(stormbreaker).name).toBe("[+20] Stormbreaker");
