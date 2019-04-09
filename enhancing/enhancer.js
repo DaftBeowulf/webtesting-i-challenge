@@ -27,8 +27,13 @@ function repair(item) {
 
 function get(item) {
   const { name, enhancement } = item;
-  enhancement > 0 &&
-    !name.includes("[+") &&
-    (item.name = `[+${enhancement}] ${name}`);
+  const i = name.indexOf("]");
+
+  enhancement > 0 && i === -1
+    ? (item.name = `[+${enhancement}] ${name}`)
+    : enhancement > 0
+    ? (item.name = `[+${enhancement}] ${name.slice(i + 2)}`)
+    : null;
+
   return { ...item };
 }
